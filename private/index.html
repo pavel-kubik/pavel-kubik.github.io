@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Private – Pavel Kubík</title>
+  <link rel="preload" href="../fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <main class="wrap narrow">
+    <nav class="topbar">
+      <a href="../">← Projects</a>
+      <span>Private</span>
+    </nav>
+    <header class="private-head">
+      <h1>Test links</h1>
+    </header>
+
+    <section id="locked" class="panel">
+      <form id="unlock">
+        <div class="field">
+          <input id="pass" type="password" autocomplete="current-password" inputmode="numeric" placeholder="Passcode" aria-label="Passcode" required>
+          <button class="btn primary" type="submit">Unlock</button>
+        </div>
+        <label class="check"><input id="remember" type="checkbox"> Remember on this device</label>
+        <p id="msg" class="msg" role="status"></p>
+      </form>
+    </section>
+
+    <section id="content" hidden>
+      <div id="groups"></div>
+      <div class="toolbar">
+        <button id="edit" class="btn" type="button">Edit links</button>
+        <button id="lock" class="btn" type="button">Lock</button>
+      </div>
+    </section>
+
+    <section id="editor" class="panel" hidden>
+      <textarea id="json" spellcheck="false" aria-label="Links as JSON"></textarea>
+      <div class="actions">
+        <button id="download" class="btn primary" type="button">Download links.enc.json</button>
+        <button id="cancel" class="btn" type="button">Close</button>
+      </div>
+      <p id="editmsg" class="msg" role="status">Edit, download, then commit the file as <code>private/links.enc.json</code>.</p>
+    </section>
+
+  </main>
+
+  <script>
+  (() => {
+    const FILE = 'links.enc.json';
+    const KEY = 'private-pass';
+    const $ = (id) => document.getElementById(id);
+    const enc = new TextEncoder();
+    const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+    const unb64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+    let pass = '';
+    let iter = 600000;
+
+    async function deriveKey(passphrase, salt, iterations) {
+      const base = await crypto.subtle.importKey('raw', enc.encode(passphrase), 'PBKDF2', false, ['deriveKey']);
+      return crypto.subtle.deriveKey(
+        { name: 'PBKDF2', hash: 'SHA-256', salt, iterations },
+        base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+    }
+
+    async function decrypt(box, passphrase) {
+      const key = await deriveKey(passphrase, unb64(box.salt), box.iter);
+      const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(box.iv) }, key, unb64(box.ct));
+      return JSON.parse(new TextDecoder().decode(plain));
+    }
+
+    async function encrypt(data, passphrase) {
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const key = await deriveKey(passphrase, salt, iter);
+      const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(JSON.stringify(data)));
+      return { v: 1, kdf: 'PBKDF2-SHA256', iter, salt: b64(salt), iv: b64(iv), ct: b64(ct) };
+    }
+
+    function el(tag, cls, text) {
+      const n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+
+    function render(data) {
+      const root = $('groups');
+      root.replaceChildren();
+      for (const g of data.groups || []) {
+        const sec = el('section', 'group');
+        sec.append(el('h2', '', g.title));
+        if (g.note) sec.append(el('p', 'note', g.note));
+        const ul = el('ul', 'links');
+        for (const l of g.links || []) {
+          if (!/^https?:\/\//i.test(l.url)) continue;
+          const a = el('a');
+          a.href = l.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.append(el('span', 'label', l.label), el('span', 'url', l.url));
+          const li = el('li');
+          li.append(a);
+          ul.append(li);
+        }
+        sec.append(ul);
+        root.append(sec);
+      }
+      $('json').value = JSON.stringify(data, null, 2);
+    }
+
+    async function unlock(passphrase, silent) {
+      const msg = $('msg');
+      msg.className = 'msg';
+      msg.textContent = 'Unlocking…';
+      try {
+        const res = await fetch(FILE, { cache: 'no-store' });
+        if (!res.ok) throw new Error('missing');
+        const box = await res.json();
+        const data = await decrypt(box, passphrase);
+        pass = passphrase;
+        iter = box.iter;
+        render(data);
+        $('locked').hidden = true;
+        $('content').hidden = false;
+        msg.textContent = '';
+        return true;
+      } catch (e) {
+        msg.textContent = silent ? '' : (e.message === 'missing' ? 'Could not load the encrypted links file.' : 'Wrong passcode.');
+        if (!silent) msg.className = 'msg error';
+        return false;
+      }
+    }
+
+    function store(action, value) {
+      try { return localStorage[action + 'Item'](KEY, value); } catch (e) { return null; }
+    }
+
+    $('unlock').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const value = $('pass').value;
+      if (await unlock(value) && $('remember').checked) store('set', value);
+      $('pass').value = '';
+    });
+
+    $('lock').addEventListener('click', () => {
+      store('remove');
+      pass = '';
+      $('groups').replaceChildren();
+      $('json').value = '';
+      $('content').hidden = true;
+      $('editor').hidden = true;
+      $('locked').hidden = false;
+    });
+
+    $('edit').addEventListener('click', () => { $('editor').hidden = false; $('json').focus(); });
+    $('cancel').addEventListener('click', () => { $('editor').hidden = true; });
+
+    $('download').addEventListener('click', async () => {
+      const msg = $('editmsg');
+      let data;
+      try { data = JSON.parse($('json').value); }
+      catch (e) { msg.className = 'msg error'; msg.textContent = 'Not valid JSON: ' + e.message; return; }
+      const box = await encrypt(data, pass);
+      const url = URL.createObjectURL(new Blob([JSON.stringify(box) + '\n'], { type: 'application/json' }));
+      const a = el('a');
+      a.href = url;
+      a.download = FILE;
+      a.click();
+      URL.revokeObjectURL(url);
+      render(data);
+      msg.className = 'msg';
+      msg.textContent = 'Downloaded. Commit it as private/links.enc.json to publish the change.';
+    });
+
+    const saved = store('get');
+    if (saved) unlock(saved, true).then((ok) => { if (!ok) store('remove'); });
+  })();
+  </script>
+</body>
+</html>

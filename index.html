@@ -1,11 +1,137 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <!-- HTML meta refresh URL redirection -->
-   <meta http-equiv="refresh"
-   content="0; url=https://pavel-kubik.github.io/post-stroke-recovery/build/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pavel Kubík – Projects</title>
+  <meta name="description" content="Games and small web apps by Pavel Kubík that you can open and play right now.">
+  <link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <p>The page has moved to:
-   <a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">this page</a></p>
+  <div class="wrap">
+    <nav class="topbar">
+      <span>Projects</span>
+      <a href="https://github.com/pavel-kubik">GitHub ↗</a>
+    </nav>
+
+    <header class="hero">
+      <h1>Pavel<br>Kubík</h1>
+      <p>I make games and small web things. <mark>All four are live</mark> – pick one and try it.</p>
+    </header>
+
+    <main>
+      <article class="project p-dragon">
+        <a class="tile" href="https://pavel-kubik.github.io/verdigris-sky-duel/" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#2f8f7b"/>
+            <path d="M-4 30 Q50 -8 104 30" fill="none" stroke="#1f6657" stroke-width="9"/>
+            <path d="M-4 78 Q50 108 104 78" fill="none" stroke="#1f6657" stroke-width="9"/>
+            <path d="M9 52 Q50 14 91 52 Q50 86 9 52Z" fill="#f6d04d" stroke="#17140f" stroke-width="3" stroke-linejoin="round"/>
+            <g id="pupil"><path d="M50 27 Q59 51 50 75 Q41 51 50 27Z" fill="#17140f"/></g>
+          </svg>
+        </a>
+        <p class="meta"><b>01</b>2026 · Three.js · solo &amp; co-op</p>
+        <h2><a href="https://pavel-kubik.github.io/verdigris-sky-duel/">Verdigris Sky Duel</a></h2>
+        <p>Fly a green dragon against waves of crimson wyverns. The dragon, its scales and the forest below are all drawn by code – there isn't a single image file. Made for phones first.</p>
+        <div class="go">
+          <a href="https://pavel-kubik.github.io/verdigris-sky-duel/">Play solo →</a>
+          <a href="https://pavel-kubik.github.io/verdigris-sky-duel/mp/">Co-op beta →</a>
+          <a class="src" href="https://github.com/pavel-kubik/verdigris-sky-duel">Source</a>
+        </div>
+      </article>
+
+      <article class="project p-mestle">
+        <a class="tile" href="https://mestle.cz" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#e2452b"/>
+            <g fill="none" stroke="#fbf6ea" stroke-width="2.5">
+              <circle cx="62" cy="40" r="12"/>
+              <circle cx="62" cy="40" r="24"/>
+              <circle cx="62" cy="40" r="36"/>
+            </g>
+            <circle class="ring" cx="62" cy="40" r="36" fill="none" stroke="#17140f" stroke-width="2.5" opacity="0"/>
+            <circle cx="62" cy="40" r="5" fill="#17140f"/>
+            <path d="M18 84 L44 58" stroke="#17140f" stroke-width="4" stroke-linecap="round"/>
+            <path d="M34 56 L46 56 L46 68" fill="none" stroke="#17140f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="84" r="5" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+          </svg>
+        </a>
+        <p class="meta"><b>02</b>2026 · React · daily puzzle</p>
+        <h2><a href="https://mestle.cz">Městle</a></h2>
+        <p>Guess the Czech city of the day. Every attempt tells you how far off you were and which way to go, so the map in your head gets better each morning.</p>
+        <div class="go">
+          <a href="https://mestle.cz">Play at mestle.cz →</a>
+          <a class="src" href="https://github.com/pavel-kubik/mestle">Source</a>
+        </div>
+      </article>
+
+      <article class="project p-abc">
+        <a class="tile" href="https://abeceda-hrou.pages.dev" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100" font-family="Bricolage, Arial, sans-serif" font-weight="800" text-anchor="middle">
+            <rect width="100" height="100" fill="#f3b62a"/>
+            <g class="card-b" transform="rotate(9 66 60)">
+              <rect x="46" y="38" width="40" height="46" fill="#e2452b" stroke="#17140f" stroke-width="3"/>
+              <text x="66" y="74" font-size="36" fill="#fbf6ea">B</text>
+            </g>
+            <g class="card-a" transform="rotate(-8 36 42)">
+              <rect x="14" y="16" width="44" height="50" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+              <text x="36" y="56" font-size="42" fill="#17140f">A</text>
+            </g>
+          </svg>
+        </a>
+        <p class="meta"><b>03</b>2026 · React · offline PWA</p>
+        <h2><a href="https://abeceda-hrou.pages.dev" lang="cs">Abeceda hrou</a></h2>
+        <p>First Czech letters for preschoolers, four to five years old. Short lessons with pictures, sounds and mini-games, and a learning plan for the parent. Works offline, with no ads and no accounts.</p>
+        <div class="go">
+          <a href="https://abeceda-hrou.pages.dev">Start learning →</a>
+        </div>
+      </article>
+
+      <article class="project p-firmo">
+        <a class="tile" href="https://firmometr.cz" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#2b4bd8"/>
+            <g fill="none" stroke-width="11">
+              <path d="M18 66 A32 32 0 0 1 34 38.3" stroke="#e2452b"/>
+              <path d="M34 38.3 A32 32 0 0 1 66 38.3" stroke="#f3b62a"/>
+              <path d="M66 38.3 A32 32 0 0 1 82 66" stroke="#7fd6bf"/>
+            </g>
+            <path d="M12.5 66 A37.5 37.5 0 0 1 87.5 66 M23.5 66 A26.5 26.5 0 0 1 76.5 66 M12.5 66 H23.5 M76.5 66 H87.5" fill="none" stroke="#17140f" stroke-width="3" stroke-linejoin="round"/>
+            <path class="needle" d="M50 66 L70 44" stroke="#fbf6ea" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="50" cy="66" r="6" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+            <path d="M30 82 H70" stroke="#fbf6ea" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <p class="meta"><b>04</b>2026 · Angular · Czech registries</p>
+        <h2><a href="https://firmometr.cz">Firmometr</a></h2>
+        <p>Check a Czech company before you do business with it. One search pulls together the public registries – company details, insolvency proceedings and VAT-payer reliability – and a watch list keeps an eye on the firms you care about.</p>
+        <div class="go">
+          <a href="https://firmometr.cz">Open firmometr.cz →</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <a href="https://github.com/pavel-kubik">github.com/pavel-kubik ↗</a>
+      <a class="key" href="private/" rel="nofollow">Private</a>
+    </footer>
+  </div>
+
+  <script>
+    // The dragon keeps an eye on the pointer.
+    (() => {
+      const pupil = document.getElementById('pupil');
+      if (!pupil || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      addEventListener('pointermove', (e) => {
+        const r = pupil.ownerSVGElement.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const d = Math.hypot(dx, dy) || 1;
+        const k = Math.min(1, d / 300);
+        pupil.setAttribute('transform', `translate(${(dx / d * 15 * k).toFixed(1)} ${(dy / d * 4 * k).toFixed(1)})`);
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
