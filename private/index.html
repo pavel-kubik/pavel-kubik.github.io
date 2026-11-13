@@ -5,19 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Private – Pavel Kubík</title>
+  <link rel="preload" href="../fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <p class="eyebrow">Private</p>
+  <main class="wrap narrow">
+    <nav class="topbar">
+      <a href="../">← Projects</a>
+      <span>Private</span>
+    </nav>
+    <header class="private-head">
       <h1>Test links</h1>
     </header>
 
     <section id="locked" class="panel">
       <form id="unlock">
         <div class="field">
-          <input id="pass" type="password" autocomplete="current-password" placeholder="Passphrase" aria-label="Passphrase" required>
+          <input id="pass" type="password" autocomplete="current-password" inputmode="numeric" placeholder="Passcode" aria-label="Passcode" required>
           <button class="btn primary" type="submit">Unlock</button>
         </div>
         <label class="check"><input id="remember" type="checkbox"> Remember on this device</label>
@@ -42,9 +46,6 @@
       <p id="editmsg" class="msg" role="status">Edit, download, then commit the file as <code>private/links.enc.json</code>.</p>
     </section>
 
-    <footer>
-      <a href="../">← Projects</a>
-    </footer>
   </main>
 
   <script>
@@ -128,7 +129,7 @@
         msg.textContent = '';
         return true;
       } catch (e) {
-        msg.textContent = silent ? '' : (e.message === 'missing' ? 'Could not load the encrypted links file.' : 'Wrong passphrase.');
+        msg.textContent = silent ? '' : (e.message === 'missing' ? 'Could not load the encrypted links file.' : 'Wrong passcode.');
         if (!silent) msg.className = 'msg error';
         return false;
       }

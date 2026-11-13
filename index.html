@@ -4,73 +4,129 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pavel Kubík – Projects</title>
-  <meta name="description" content="Games and small web apps by Pavel Kubík that you can open and try right now.">
+  <meta name="description" content="Games and small web apps by Pavel Kubík that you can open and play right now.">
+  <link rel="preload" href="fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <p class="eyebrow">Projects</p>
-      <h1>Pavel Kubík</h1>
-      <p class="lede">Games and small web apps I've built. Everything here is live – open it and try it.</p>
+  <div class="wrap">
+    <nav class="topbar">
+      <span>Projects, 2020 – now</span>
+      <a href="https://github.com/pavel-kubik">GitHub ↗</a>
+    </nav>
+
+    <header class="hero">
+      <h1>Pavel<br>Kubík</h1>
+      <p>I make games and small web things. <mark>All four are live</mark> – pick one and play.</p>
     </header>
 
-    <h2 class="section-title">Live now</h2>
-    <ul class="projects">
-      <li class="project">
-        <span class="year">2026</span>
-        <div class="body">
-          <h3><a href="https://pavel-kubik.github.io/verdigris-sky-duel/">Verdigris Sky Duel</a></h3>
-          <p>Fly a green dragon against waves of crimson wyverns. The dragon, textures and forest are all generated in code with Three.js – no asset files. Built for phones first, solo or co-op.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://pavel-kubik.github.io/verdigris-sky-duel/">Play solo</a>
-            <a class="btn" href="https://pavel-kubik.github.io/verdigris-sky-duel/mp/">Co-op (beta)</a>
-            <a class="btn quiet" href="https://github.com/pavel-kubik/verdigris-sky-duel">Source</a>
-          </div>
+    <main>
+      <article class="project p-dragon">
+        <a class="tile" href="https://pavel-kubik.github.io/verdigris-sky-duel/" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#2f8f7b"/>
+            <path d="M-4 30 Q50 -8 104 30" fill="none" stroke="#1f6657" stroke-width="9"/>
+            <path d="M-4 78 Q50 108 104 78" fill="none" stroke="#1f6657" stroke-width="9"/>
+            <path d="M9 52 Q50 14 91 52 Q50 86 9 52Z" fill="#f6d04d" stroke="#17140f" stroke-width="3" stroke-linejoin="round"/>
+            <g id="pupil"><path d="M50 27 Q59 51 50 75 Q41 51 50 27Z" fill="#17140f"/></g>
+          </svg>
+        </a>
+        <p class="meta"><b>01</b>2026 · Three.js · solo &amp; co-op</p>
+        <h2><a href="https://pavel-kubik.github.io/verdigris-sky-duel/">Verdigris Sky Duel</a></h2>
+        <p>Fly a green dragon against waves of crimson wyverns. The dragon, its scales and the forest below are all drawn by code – there isn't a single image file. Made for phones first.</p>
+        <div class="go">
+          <a href="https://pavel-kubik.github.io/verdigris-sky-duel/">Play solo →</a>
+          <a href="https://pavel-kubik.github.io/verdigris-sky-duel/mp/">Co-op beta →</a>
+          <a class="src" href="https://github.com/pavel-kubik/verdigris-sky-duel">Source</a>
         </div>
-      </li>
+      </article>
 
-      <li class="project">
-        <span class="year">2026</span>
-        <div class="body">
-          <h3><a href="https://mestle.cz">Městle</a></h3>
-          <p>A daily geography game: guess the Czech city of the day. After each attempt you see how far off you were and in which direction.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://mestle.cz">Play at mestle.cz</a>
-            <a class="btn quiet" href="https://github.com/pavel-kubik/mestle">Source</a>
-          </div>
+      <article class="project p-mestle">
+        <a class="tile" href="https://mestle.cz" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#e2452b"/>
+            <g fill="none" stroke="#fbf6ea" stroke-width="2.5">
+              <circle cx="62" cy="40" r="12"/>
+              <circle cx="62" cy="40" r="24"/>
+              <circle cx="62" cy="40" r="36"/>
+            </g>
+            <circle class="ring" cx="62" cy="40" r="36" fill="none" stroke="#17140f" stroke-width="2.5" opacity="0"/>
+            <circle cx="62" cy="40" r="5" fill="#17140f"/>
+            <path d="M18 84 L44 58" stroke="#17140f" stroke-width="4" stroke-linecap="round"/>
+            <path d="M34 56 L46 56 L46 68" fill="none" stroke="#17140f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="18" cy="84" r="5" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+          </svg>
+        </a>
+        <p class="meta"><b>02</b>2026 · React · daily puzzle</p>
+        <h2><a href="https://mestle.cz">Městle</a></h2>
+        <p>Guess the Czech city of the day. Every attempt tells you how far off you were and which way to go, so the map in your head gets better each morning.</p>
+        <div class="go">
+          <a href="https://mestle.cz">Play at mestle.cz →</a>
+          <a class="src" href="https://github.com/pavel-kubik/mestle">Source</a>
         </div>
-      </li>
+      </article>
 
-      <li class="project">
-        <span class="year">2023</span>
-        <div class="body">
-          <h3><a href="https://graphpl.netlify.app/">Graphical Programming Language</a></h3>
-          <p>A visual language for writing code on a phone or tablet. Its first job: solving the daily Advent of Code puzzle without a keyboard.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://graphpl.netlify.app/">Open the editor</a>
-            <a class="btn quiet" href="https://github.com/pavel-kubik/graphical-programming-language">Source</a>
-          </div>
+      <article class="project p-gpl">
+        <a class="tile" href="https://graphpl.netlify.app/" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#2b4bd8"/>
+            <g stroke="#17140f" stroke-width="3" stroke-linejoin="round">
+              <path d="M14 16 H78 V34 H26 V66 H58 V84 H14 Z" fill="#fbf6ea"/>
+              <rect x="32" y="41" width="54" height="18" fill="#f3b62a"/>
+            </g>
+            <circle cx="24" cy="25" r="3.5" fill="#17140f"/>
+            <path d="M40 50 H62" stroke="#17140f" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <p class="meta"><b>03</b>2023 · React · visual code</p>
+        <h2><a href="https://graphpl.netlify.app/">Graphical Programming Language</a></h2>
+        <p>Programming with your thumbs. A block language built so I could solve the daily Advent of Code puzzle from a phone, no keyboard needed.</p>
+        <div class="go">
+          <a href="https://graphpl.netlify.app/">Open the editor →</a>
+          <a class="src" href="https://github.com/pavel-kubik/graphical-programming-language">Source</a>
         </div>
-      </li>
+      </article>
 
-      <li class="project">
-        <span class="year">2020</span>
-        <div class="body">
-          <h3><a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Post-stroke Recovery</a></h3>
-          <p>A simple pointer exercise: reach the square and it jumps somewhere else. Made for practising hand movement after a stroke.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Try it</a>
-            <a class="btn quiet" href="https://github.com/pavel-kubik/post-stroke-recovery">Source</a>
-          </div>
+      <article class="project p-stroke">
+        <a class="tile" href="https://pavel-kubik.github.io/post-stroke-recovery/build/" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <rect width="100" height="100" fill="#f3b62a"/>
+            <rect x="14" y="58" width="26" height="26" fill="none" stroke="#17140f" stroke-width="2.5" stroke-dasharray="5 4"/>
+            <path d="M40 60 Q52 54 58 42" fill="none" stroke="#17140f" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>
+            <rect class="hop" x="58" y="18" width="26" height="26" fill="#e2452b" stroke="#17140f" stroke-width="3"/>
+            <path d="M70 62 L70 84 L76 78 L81 88 L85 86 L80 76 L88 76 Z" fill="#fbf6ea" stroke="#17140f" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="meta"><b>04</b>2020 · React · canvas</p>
+        <h2><a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Post-stroke Recovery</a></h2>
+        <p>Reach the square and it jumps somewhere else. A tiny exercise for practising hand movement after a stroke.</p>
+        <div class="go">
+          <a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Try it →</a>
+          <a class="src" href="https://github.com/pavel-kubik/post-stroke-recovery">Source</a>
         </div>
-      </li>
-    </ul>
+      </article>
+    </main>
 
     <footer>
-      <a href="https://github.com/pavel-kubik">github.com/pavel-kubik</a>
-      <a href="private/" rel="nofollow">Private</a>
+      <a href="https://github.com/pavel-kubik">github.com/pavel-kubik ↗</a>
+      <a class="key" href="private/" rel="nofollow">Private</a>
     </footer>
-  </main>
+  </div>
+
+  <script>
+    // The dragon keeps an eye on the pointer.
+    (() => {
+      const pupil = document.getElementById('pupil');
+      if (!pupil || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      addEventListener('pointermove', (e) => {
+        const r = pupil.ownerSVGElement.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const d = Math.hypot(dx, dy) || 1;
+        const k = Math.min(1, d / 300);
+        pupil.setAttribute('transform', `translate(${(dx / d * 15 * k).toFixed(1)} ${(dy / d * 4 * k).toFixed(1)})`);
+      }, { passive: true });
+    })();
+  </script>
 </body>
 </html>
