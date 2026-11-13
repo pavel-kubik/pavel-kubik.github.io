@@ -130,13 +130,16 @@ h1, h2, .display {
 
 .p-dragon { --hl: #7fd6bf; }
 .p-mestle { --hl: #ff9b86; }
-.p-gpl { --hl: #a9b8ff; }
-.p-stroke { --hl: var(--yellow); }
+.p-abc { --hl: var(--yellow); }
+.p-firmo { --hl: #a9b8ff; }
 
 /* Small bits of life in the tiles */
 #pupil { transition: transform 0.12s ease-out; }
-.hop { transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1); }
-.tile:hover .hop { transform: translate(-44px, 38px); }
+.needle { transform-origin: 50px 66px; transform: rotate(-75deg); transition: transform 0.5s cubic-bezier(0.3, 1.6, 0.5, 1); }
+.tile:hover .needle { transform: none; }
+.card-a, .card-b { transition: translate 0.25s cubic-bezier(0.3, 1.6, 0.5, 1); }
+.tile:hover .card-a { translate: -3px -4px; }
+.tile:hover .card-b { translate: 4px 3px; }
 .ring { transform-origin: 62px 40px; }
 .tile:hover .ring { animation: ping 1.1s ease-out infinite; }
 @keyframes ping { from { transform: scale(0.35); opacity: 1; } to { transform: scale(1.25); opacity: 0; } }

@@ -11,13 +11,13 @@
 <body>
   <div class="wrap">
     <nav class="topbar">
-      <span>Projects, 2020 – now</span>
+      <span>Projects</span>
       <a href="https://github.com/pavel-kubik">GitHub ↗</a>
     </nav>
 
     <header class="hero">
       <h1>Pavel<br>Kubík</h1>
-      <p>I make games and small web things. <mark>All four are live</mark> – pick one and play.</p>
+      <p>I make games and small web things. <mark>All four are live</mark> – pick one and try it.</p>
     </header>
 
     <main>
@@ -66,43 +66,48 @@
         </div>
       </article>
 
-      <article class="project p-gpl">
-        <a class="tile" href="https://graphpl.netlify.app/" tabindex="-1" aria-hidden="true">
-          <svg viewBox="0 0 100 100">
-            <rect width="100" height="100" fill="#2b4bd8"/>
-            <g stroke="#17140f" stroke-width="3" stroke-linejoin="round">
-              <path d="M14 16 H78 V34 H26 V66 H58 V84 H14 Z" fill="#fbf6ea"/>
-              <rect x="32" y="41" width="54" height="18" fill="#f3b62a"/>
+      <article class="project p-abc">
+        <a class="tile" href="https://abeceda-hrou.pages.dev" tabindex="-1" aria-hidden="true">
+          <svg viewBox="0 0 100 100" font-family="Bricolage, Arial, sans-serif" font-weight="800" text-anchor="middle">
+            <rect width="100" height="100" fill="#f3b62a"/>
+            <g class="card-b" transform="rotate(9 66 60)">
+              <rect x="46" y="38" width="40" height="46" fill="#e2452b" stroke="#17140f" stroke-width="3"/>
+              <text x="66" y="74" font-size="36" fill="#fbf6ea">B</text>
             </g>
-            <circle cx="24" cy="25" r="3.5" fill="#17140f"/>
-            <path d="M40 50 H62" stroke="#17140f" stroke-width="3" stroke-linecap="round"/>
+            <g class="card-a" transform="rotate(-8 36 42)">
+              <rect x="14" y="16" width="44" height="50" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+              <text x="36" y="56" font-size="42" fill="#17140f">A</text>
+            </g>
           </svg>
         </a>
-        <p class="meta"><b>03</b>2023 · React · visual code</p>
-        <h2><a href="https://graphpl.netlify.app/">Graphical Programming Language</a></h2>
-        <p>Programming with your thumbs. A block language built so I could solve the daily Advent of Code puzzle from a phone, no keyboard needed.</p>
+        <p class="meta"><b>03</b>2026 · React · offline PWA</p>
+        <h2><a href="https://abeceda-hrou.pages.dev" lang="cs">Abeceda hrou</a></h2>
+        <p>First Czech letters for preschoolers, four to five years old. Short lessons with pictures, sounds and mini-games, and a learning plan for the parent. Works offline, with no ads and no accounts.</p>
         <div class="go">
-          <a href="https://graphpl.netlify.app/">Open the editor →</a>
-          <a class="src" href="https://github.com/pavel-kubik/graphical-programming-language">Source</a>
+          <a href="https://abeceda-hrou.pages.dev">Start learning →</a>
         </div>
       </article>
 
-      <article class="project p-stroke">
-        <a class="tile" href="https://pavel-kubik.github.io/post-stroke-recovery/build/" tabindex="-1" aria-hidden="true">
+      <article class="project p-firmo">
+        <a class="tile" href="https://firmometr.cz" tabindex="-1" aria-hidden="true">
           <svg viewBox="0 0 100 100">
-            <rect width="100" height="100" fill="#f3b62a"/>
-            <rect x="14" y="58" width="26" height="26" fill="none" stroke="#17140f" stroke-width="2.5" stroke-dasharray="5 4"/>
-            <path d="M40 60 Q52 54 58 42" fill="none" stroke="#17140f" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>
-            <rect class="hop" x="58" y="18" width="26" height="26" fill="#e2452b" stroke="#17140f" stroke-width="3"/>
-            <path d="M70 62 L70 84 L76 78 L81 88 L85 86 L80 76 L88 76 Z" fill="#fbf6ea" stroke="#17140f" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect width="100" height="100" fill="#2b4bd8"/>
+            <g fill="none" stroke-width="11">
+              <path d="M18 66 A32 32 0 0 1 34 38.3" stroke="#e2452b"/>
+              <path d="M34 38.3 A32 32 0 0 1 66 38.3" stroke="#f3b62a"/>
+              <path d="M66 38.3 A32 32 0 0 1 82 66" stroke="#7fd6bf"/>
+            </g>
+            <path d="M12.5 66 A37.5 37.5 0 0 1 87.5 66 M23.5 66 A26.5 26.5 0 0 1 76.5 66 M12.5 66 H23.5 M76.5 66 H87.5" fill="none" stroke="#17140f" stroke-width="3" stroke-linejoin="round"/>
+            <path class="needle" d="M50 66 L70 44" stroke="#fbf6ea" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="50" cy="66" r="6" fill="#fbf6ea" stroke="#17140f" stroke-width="3"/>
+            <path d="M30 82 H70" stroke="#fbf6ea" stroke-width="4" stroke-linecap="round"/>
           </svg>
         </a>
-        <p class="meta"><b>04</b>2020 · React · canvas</p>
-        <h2><a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Post-stroke Recovery</a></h2>
-        <p>Reach the square and it jumps somewhere else. A tiny exercise for practising hand movement after a stroke.</p>
+        <p class="meta"><b>04</b>2026 · Angular · Czech registries</p>
+        <h2><a href="https://firmometr.cz">Firmometr</a></h2>
+        <p>Check a Czech company before you do business with it. One search pulls together the public registries – company details, insolvency proceedings and VAT-payer reliability – and a watch list keeps an eye on the firms you care about.</p>
         <div class="go">
-          <a href="https://pavel-kubik.github.io/post-stroke-recovery/build/">Try it →</a>
-          <a class="src" href="https://github.com/pavel-kubik/post-stroke-recovery">Source</a>
+          <a href="https://firmometr.cz">Open firmometr.cz →</a>
         </div>
       </article>
     </main>
